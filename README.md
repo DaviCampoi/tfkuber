@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Exercício: Gerenciando Aplicações com kubectl
 
 Este repositório contém os arquivos e instruções para implantar, escalar e gerenciar uma aplicação Nginx em um cluster Kubernetes local utilizando o Minikube e o kubectl.
@@ -126,3 +127,6 @@ Editar
 ---
 
 #
+=======
+# tfkuber
+>>>>>>> c6d695e5bc17f1785b86f186d8be64c2c60cacfd
