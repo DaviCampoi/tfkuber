@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 # Exercício: Gerenciando Aplicações com kubectl
 
 Este repositório contém os arquivos e instruções para implantar, escalar e gerenciar uma aplicação Nginx em um cluster Kubernetes local utilizando o Minikube e o kubectl.
+
+---
 
 ## ✅ Objetivo
 
@@ -23,110 +24,124 @@ Antes de iniciar, certifique-se de ter instalado:
 ## ▶️ Instruções de Uso
 
 ### 1. Inicie o Minikube
+
 ```bash
 minikube start
+```
 
-2. Verifique o cluster
-bash
-Copiar
-Editar
+### 2. Verifique o cluster
+
+```bash
 kubectl cluster-info
+```
 
+### 3. Implante a aplicação Nginx
 
-3. Implante a aplicação Nginx
-bash
-Copiar
-Editar
+```bash
 kubectl apply -f nginx-deployment.yaml
 kubectl get deployments
 kubectl get pods
+```
 
+### 4. Crie o serviço do tipo NodePort
 
-4. Crie o serviço do tipo NodePort
-bash
-Copiar
-Editar
+```bash
 kubectl apply -f nginx-service.yaml
 kubectl get services
+```
 
+### 5. Acesse a aplicação
 
-5. Acesse a aplicação
 Obtenha a URL:
-bash
-Copiar
-Editar
+
+```bash
 minikube service nginx-service --url
+```
+
 Acesse no navegador ou via curl:
-bash
-Copiar
-Editar
+
+```bash
 curl http://127.0.0.1:PORTA
+```
 
+> Substitua `PORTA` pelo número retornado no comando anterior.
 
-6. Escale a aplicação para 5 réplicas
-Edite nginx-deployment.yaml e altere replicas: 2 para replicas: 5
+### 6. Escale a aplicação para 5 réplicas
 
-bash
-Copiar
-Editar
+Edite o arquivo `nginx-deployment.yaml` e altere:
+
+```yaml
+replicas: 2
+```
+
+Para:
+
+```yaml
+replicas: 5
+```
+
+Depois, aplique novamente:
+
+```bash
 kubectl apply -f nginx-deployment.yaml
 kubectl get pods
+```
 
+### 7. Reduza a aplicação para 1 réplica
 
-7. Reduza a aplicação para 1 réplica
-Edite novamente nginx-deployment.yaml e defina replicas: 1
+Edite novamente `nginx-deployment.yaml` e defina:
 
-bash
-Copiar
-Editar
+```yaml
+replicas: 1
+```
+
+Aplique:
+
+```bash
 kubectl apply -f nginx-deployment.yaml
 kubectl get pods
+```
 
+### 8. Verifique os logs de um pod
 
-8. Verifique os logs de um pod
-bash
-Copiar
-Editar
+```bash
 kubectl get pods
 kubectl logs <nome-do-pod>
+```
 
+> Substitua `<nome-do-pod>` pelo nome real de um pod listado no comando acima.
 
-9. Limpe o ambiente
-bash
-Copiar
-Editar
+### 9. Limpe o ambiente
+
+```bash
 kubectl delete -f nginx-service.yaml
 kubectl delete -f nginx-deployment.yaml
 kubectl get deployments
 kubectl get services
+```
 
+---
 
-🖼️ Imagens
-Página do Nginx no navegador:
+## 🖼️ Imagens
 
+### Página do Nginx no navegador:
 
 ![Página Nginx](imagens/print1.jpg)
 
 ### 5 Pods em execução:
+
 ![Pods](imagens/print2.jpg)
 
-📁 Estrutura do Repositório
-Copiar
-Editar
+---
+
+## 📁 Estrutura do Repositório
+
+```
 .
 ├── nginx-deployment.yaml
 ├── nginx-service.yaml
 ├── imagens/
-│   ├── nginx-navegador.png
-│   └── nginx-pods-5.png
+│   ├── print1.jpg
+│   └── print2.jpg
 └── README.md
-yaml
-Copiar
-Editar
-
----
-
-#
-=======
-# tfkuber
->>>>>>> c6d695e5bc17f1785b86f186d8be64c2c60cacfd
+```
